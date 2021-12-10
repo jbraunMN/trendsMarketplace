@@ -69,6 +69,7 @@ with topProducts:
     plt.title('Top 10 Products')
     plt.ylabel('Product Name')
     plt.xlabel('Product Sales in {0}'.format(measure))
+    plt.set_axisbelow(True)
     current_values = plt.gca().get_xticks()
     st.pyplot(fig1)
     
