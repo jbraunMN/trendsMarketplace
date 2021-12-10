@@ -1,0 +1,24 @@
+level,employeeNumber,emp_name,reportsTo,jobTitle,total_sales
+1,1002,"Diane Murphy",NULL,President,9604.190610
+2,1056,"Mary Patterson",1002,"VP Sales",9604.190610
+2,1076,"Jeff Firrelli",1002,"VP Marketing",0.000000
+3,1102,"Gerard Bondur",1056,"Sale Manager (EMEA)",4520.712280
+3,1143,"Anthony Bow",1056,"Sales Manager (NA)",3479.191910
+3,1088,"William Patterson",1056,"Sales Manager (APAC)",1147.176350
+3,1621,"Mami Nishi",1056,"Sales Rep",457.110070
+4,1370,"Gerard Hernandez",1102,"Sales Rep",1258.577810
+4,1165,"Leslie Jennings",1143,"Sales Rep",1081.530540
+4,1401,"Pamela Castillo",1102,"Sales Rep",868.220550
+4,1501,"Larry Bott",1102,"Sales Rep",732.096790
+4,1504,"Barry Jones",1102,"Sales Rep",704.853910
+4,1323,"George Vanauf",1143,"Sales Rep",669.377050
+4,1612,"Peter Marsh",1088,"Sales Rep",584.593760
+4,1337,"Loui Bondur",1102,"Sales Rep",569.485750
+4,1611,"Andy Fixter",1088,"Sales Rep",562.582590
+4,1216,"Steve Patterson",1143,"Sales Rep",505.875420
+4,1286,"Foon Yue Tseng",1143,"Sales Rep",488.212670
+4,1702,"Martin Gerard",1102,"Sales Rep",387.477470
+4,1188,"Julie Firrelli",1143,"Sales Rep",386.663200
+4,1166,"Leslie Thompson",1143,"Sales Rep",347.533030
+4,1619,"Tom King",1088,"Sales Rep",0.000000
+4,1625,"Yoshimi Kato",1621,"Sales Rep",0.000000
