@@ -142,7 +142,7 @@ with salesEmployee:
     plt.title('Sales under employee')
     plt.ylabel('Sales (in thousands)')
     plt.xlabel('Employee name')
-    plt.xticks(rotation=85)
+    plt.xticks(rotation=90)
     current_values = plt.gca().get_xticks()
     st.pyplot(fig1)
 
