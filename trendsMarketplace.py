@@ -10,6 +10,8 @@ dbdesc = st.container()
 topProducts = st.container()
 salesEmployee = st.container()
 topProductLine = st.container()
+topCustomer = st.container()
+
 
 with title:
     st.title('Classic Models Performance Dashboard')
@@ -75,6 +77,33 @@ with topProducts:
     current_values = plt.gca().get_xticks()
     st.pyplot(fig1)
     
+    
+with topCustomer:
+    # select year period
+    year = st.selectbox(label = 'Select the Year',
+                        options = [2003, 2004, 2005])
+    # select units, in dollars or in order amount
+    measure = st.selectbox(label = 'Select Measurements',
+                        options = ['orders count', 'total price'])
+
+    # data cleaning
+    jdf = pd.read_csv('topCustomers.csv')
+    jdf = jdf.rename(columns={"total": "total price", "orderNumber": "orders count"})
+    jdf1 = pd.DataFrame(jdf.groupby(['year', 'customerName'])['total price'].sum())
+    jdf2 = pd.DataFrame(jdf.groupby(['year', 'customerName'])['orders count'].count())
+    final = jdf1.merge(jdf2, left_index=True, right_index=True)
+    final = final.loc[(year,)].sort_values(measure, ascending=False).head(10)
+
+    # plot bar chart
+    fig1 = plt.figure()
+    plt.subplot(1,1,1)
+    plt.style.use('ggplot')
+    final[measure].plot.bar(legend=False)
+    plt.title('Top 10 Customers')
+    st.pyplot(fig1)
+    
+    
+
 with salesEmployee:
     st.header('Sales under each employee at any given level: ')
     
