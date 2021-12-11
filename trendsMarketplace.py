@@ -29,6 +29,9 @@ with dbdesc:
 with topProducts:
     st.header('Top products in selected time period:')
     
+    yearselect = st.selectbox(label = 'Select year to evaluate',
+                              options = [2003, 2004, 2005])
+    
     # Create a slider to select the range of months for evaluation
     monthrange = st.select_slider(label = 'Select range of months to evaluate',
                                   options = ['Jan', 'Feb', 'Mar', 'Apr', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
@@ -55,7 +58,7 @@ with topProducts:
     df = pd.read_csv('jbdf.csv')
     
     # Clean the data based on inputs above
-    df = df[(df['ordMonth'] >= monthmap[monthrange[0]]) & (df['ordMonth'] <= monthmap[monthrange[1]])]
+    df = df[(df['ordYear'] == yearselect) & (df['ordMonth'] >= monthmap[monthrange[0]]) & (df['ordMonth'] <= monthmap[monthrange[1]])]
     df['ordRevs'] = df['quantityOrdered'] * df['priceEach']
     df = df.rename(columns = {'quantityOrdered': 'Units', 'ordRevs': 'Dollars'})
     df = df.groupby(['productCode', 'productName']).sum()[['Units', 'priceEach', 'Dollars']].reset_index().sort_values(measure, ascending = True)
