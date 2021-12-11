@@ -8,9 +8,9 @@ import matplotlib.pyplot as plt
 title = st.container()
 dbdesc = st.container()
 topProducts = st.container()
-salesEmployee = st.container()
-topProductLine = st.container()
 topCustomer = st.container()
+salesEmployee = st.container()
+
 
 
 with title:
