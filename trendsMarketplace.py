@@ -13,9 +13,9 @@ topProducts = st.container()
 topCustomer = st.container()
 salesEmployee = st.container()
 topCity = st.container()
-topVendor = st.container()
-shipping = st.container()
 
+st.title('Vendor Performance:')
+vendorsection = st.container()
 
 
 with title:
@@ -24,7 +24,7 @@ with title:
 with dbdesc:
     st.header('Database Description')
     st.caption('For this project, we used the "classicmodels" sample MySQL \
-               database.  According to the creator, this database is a sample \
+               database. According to the creator, this database is a sample \
                of a "retailer of scale models of classic cars database. It \
                contains typical business data such as customers, products, \
                sales orders, sales order line items, etc."')
@@ -183,41 +183,42 @@ with topCity:
     plt.gca().get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
     plt.xticks(rotation = 90)
     st.pyplot(fig1)
-    
-with topVendor:
-    st.title('Vendor Performance:')
-    st.header('Top 5 Vendors by Order Volume')
-    bdf3 = pd.read_csv('bVendors.csv')
-    bdf3 = bdf3.set_index('productVendor')
-    bdf3 = bdf3[0:5]
-    
-    fig1 = plt.figure()
-    plt.subplot(1,1,1)
-    plt.style.use('ggplot')
-    plt.bar(bdf3.index, height = bdf3['Orders'])
-    plt.gca().get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
-    plt.xticks(rotation = 90)
-    st.pyplot(fig1)
-    
-with shipping:
-    st.header('Vendors with Shortest Average of Days to Ship')
-    bdf4 = pd.read_csv('bShipping.csv')
-    bdf4 = bdf4.groupby('productVendor').mean()
-    bdf4 = bdf4.sort_values('Days')
-    bdf4 = bdf4[0:4]
-    
-    fig1 = plt.figure()
-    plt.subplot(1,1,1)
-    plt.style.use('ggplot')
-    plt.bar(bdf4.index, height = bdf4['Days'])
-    plt.gca().get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
-    plt.xticks(rotation = 90)
-    st.pyplot(fig1)
-    
+
+
+with vendorsection:
+    cols = st.columns(2)
+    with cols[0]:
+        st.header('Top 5 Vendors by Order Volume')
+        bdf3 = pd.read_csv('bVendors.csv')
+        bdf3 = bdf3.set_index('productVendor')
+        bdf3 = bdf3[0:5]
+        
+        fig1 = plt.figure()
+        plt.subplot(1,1,1)
+        plt.style.use('ggplot')
+        plt.bar(bdf3.index, height = bdf3['Orders'])
+        plt.gca().get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
+        plt.xticks(rotation = 90)
+        st.pyplot(fig1)
+    with cols[1]:
+        st.header('Vendors with Shortest Days to Ship')
+        bdf4 = pd.read_csv('bShipping.csv')
+        bdf4 = bdf4.groupby('productVendor').mean()
+        bdf4 = bdf4.sort_values('Days')
+        bdf4 = bdf4[0:4]
+        
+        fig1 = plt.figure()
+        plt.subplot(1,1,1)
+        plt.style.use('ggplot')
+        plt.bar(bdf4.index, height = bdf4['Days'])
+        plt.gca().get_yaxis().set_major_formatter(matplotlib.ticker.FuncFormatter(lambda x, p: format(int(x), ',')))
+        plt.xticks(rotation = 90)
+        st.pyplot(fig1)
+
 
     
     
     
-    
+
     
     
