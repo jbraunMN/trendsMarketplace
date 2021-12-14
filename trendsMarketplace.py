@@ -118,8 +118,10 @@ with salesEmployee:
     empJobTitles[empJobTitles['jobTitle'].str.contains('Manager')] = 'Sales Manager'
     jobTitles = pd.Series(empJobTitles['jobTitle'].unique())
     # Create a selectbox to select the position of employee
+    title_list = empJobTitles['jobTitle'].to_list()
+    default_ix = title_list.index("Sales Manager")
     title = st.selectbox(label = "Job title of the employee",
-                      options = jobTitles.to_list())
+                      options = title_list, index = default_ix) 
     
     
     empNames = pd.read_csv('jgempnames.csv')
